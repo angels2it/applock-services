@@ -1,6 +1,5 @@
 'use strict';
-const bcrypt 			= require('bcrypt');
-const bcrypt_p 			= require('bcrypt-promise');
+const bcrypt 			= require('bcryptjs');
 const jwt           	= require('jsonwebtoken');
 const {TE, to}          = require('../services/util.service');
 const CONFIG            = require('../config/config');
@@ -36,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
         let err, pass
         if(!this.password) TE('password not set');
 
-        [err, pass] = await to(bcrypt_p.compare(pw, this.password));
+        [err, pass] = await to(bcrypt.compare(pw, this.password));
         if(err) TE(err);
 
         if(!pass) TE('invalid password');

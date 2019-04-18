@@ -4,6 +4,7 @@ const router 			= express.Router();
 const UserController 	= require('../controllers/user.controller');
 const CompanyController = require('../controllers/company.controller');
 const HomeController 	= require('../controllers/home.controller');
+const ImeiController 	= require('../controllers/imei.controller');
 
 const custom 	        = require('./../middleware/custom');
 
@@ -24,6 +25,8 @@ router.put(     '/users',           passport.authenticate('jwt', {session:false}
 router.delete(  '/users',           passport.authenticate('jwt', {session:false}), UserController.remove);     // D
 router.post(    '/users/login',     UserController.login);
 
+router.post(    '/imei',            ImeiController.create);                  // C
+
 router.post(    '/companies',             passport.authenticate('jwt', {session:false}), CompanyController.create);                  // C
 router.get(     '/companies',             passport.authenticate('jwt', {session:false}), CompanyController.getAll);                  // R
 
@@ -32,6 +35,7 @@ router.put(     '/companies/:company_id', passport.authenticate('jwt', {session:
 router.delete(  '/companies/:company_id', passport.authenticate('jwt', {session:false}), custom.company, CompanyController.remove);  // D
 
 router.get('/dash', passport.authenticate('jwt', {session:false}),HomeController.Dashboard)
+router.get('/config', HomeController.config)
 
 
 //********* API DOCUMENTATION **********
