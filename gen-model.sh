@@ -1,0 +1,1 @@
+sequelize-auto -o "./gen-models" -d applock -h applock.ezs.network -u carta -p 3306 -x Test!234

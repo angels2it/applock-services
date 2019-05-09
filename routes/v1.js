@@ -15,7 +15,8 @@ const path              = require('path');
 require('./../middleware/passport')(passport)
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.json({status:"success", message:"Parcel Pending API", data:{"version_number":"v1.0.0"}})
+  res.statusCode = 400;//send the appropriate status code
+  res.json({status:"error", message:"Pbad request", data:{"version_number":"v1.0.0"}})
 });
 
 
@@ -23,7 +24,8 @@ router.post(    '/users',           UserController.create);                     
 router.get(     '/users',           passport.authenticate('jwt', {session:false}), UserController.get);        // R
 router.put(     '/users',           passport.authenticate('jwt', {session:false}), UserController.update);     // U
 router.delete(  '/users',           passport.authenticate('jwt', {session:false}), UserController.remove);     // D
-router.post(    '/users/login',     UserController.login);
+router.post(    '/user/login',     UserController.login);
+router.get(    '/user/info',  passport.authenticate('jwt', {session:false}),  UserController.get);
 
 router.post(    '/imei',            ImeiController.create);                  // C
 
