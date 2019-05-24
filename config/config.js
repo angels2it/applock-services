@@ -4,7 +4,7 @@ let CONFIG = {} //Make this global to use all over the application
 console.log(process.env.APP)
 
 CONFIG.app          = process.env.APP   || 'dev';
-CONFIG.port         = process.env.PORT  || '3000';
+CONFIG.port         = process.env.PORT  || '3001';
 
 CONFIG.db_dialect   = process.env.DB_DIALECT    || 'mysql';
 CONFIG.db_host      = process.env.DB_HOST       || 'applock.ezs.network';

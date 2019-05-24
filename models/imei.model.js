@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true
+    },
+    isActive: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
     }
   },
   {

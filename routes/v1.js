@@ -28,6 +28,8 @@ router.post(    '/user/login',     UserController.login);
 router.get(    '/user/info',  passport.authenticate('jwt', {session:false}),  UserController.get);
 
 router.post(    '/imei',            ImeiController.create);                  // C
+router.post(    '/imei/checkAndAddImei',            ImeiController.checkAndAddImei);                  // C
+router.get(    '/imei/:id',            ImeiController.isActive);                  // Q
 
 router.post(    '/companies',             passport.authenticate('jwt', {session:false}), CompanyController.create);                  // C
 router.get(     '/companies',             passport.authenticate('jwt', {session:false}), CompanyController.getAll);                  // R
